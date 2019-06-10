@@ -36,6 +36,5 @@ public class Main2 {
         int b = Integer.parseInt("1000",2);
         System.out.println(Integer.toBinaryString(a | b));
         System.out.println();
-
     }
 }
