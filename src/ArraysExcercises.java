@@ -1,6 +1,3 @@
-import package1.Packages1;
-import package1.Packages2;
-
 import java.util.Arrays;
 
 public class ArraysExcercises extends Object {
@@ -312,7 +309,7 @@ public class ArraysExcercises extends Object {
         // Zadanie
         // Stworzyć 2 tablice obiektów ArraysExcercises
         // i porównać za pomocą meetody Arrays.equals
-        ArraysExcercises[] arr100= {
+        ArraysExcercises[] arr100 = {
                 new ArraysExcercises(),
                 new ArraysExcercises(),
         };
@@ -397,12 +394,29 @@ public class ArraysExcercises extends Object {
                 Arrays.toString(tab)
         );
 
+        // Arrays.binarySearch
+        int [] arr200 = {
+                3, 1, 2
+        };
+        int location = Arrays.binarySearch(arr200, 3);
+        System.out.println(location);
+        Arrays.sort(arr200);
+        location = Arrays.binarySearch(arr200, 3);
+        System.out.println(
+                Arrays.toString(arr200)
+        );
+        System.out.println(location);
 
-
-
-
-
-
+        String[] s = {
+                "test2", "TEst1"
+        };
+        Arrays.sort(s, String.CASE_INSENSITIVE_ORDER);
+        System.out.println(
+                Arrays.toString(s)
+        );
+        int index = Arrays.binarySearch(s, "test1",
+                String.CASE_INSENSITIVE_ORDER);
+        System.out.println(index);
     }
 
     @Override
