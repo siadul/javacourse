@@ -7,6 +7,10 @@ public class Project1 extends Object {
 
 
     public static void main(String... args) {
+        // projekty proszę wysyłać na:
+        // krzysztofsiadul@gmail.com
+        // termin: 07.07
+
         // PROJEKT 1 KALKULATOR
         // Napisać program, który pozwala nam wykonywać operacji matematycznych na liczbach
         // wprowadzonych z klawiatury
