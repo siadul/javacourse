@@ -168,9 +168,87 @@ public class Oop1 {
         // na obiektach tych dwóch wcześniejszych klas
         // zademonstrować zjawisko polimorfizmu
 
+        // 3 klasy, klasa B dziedziczy po A,
+        // klasa C zawiera pole tupu A
+        // klasa C posiada konstruktor z parametrem, który
+        // inicjalizuje to pole.
+
+        A a1 = new A();
+        B b1 = new B();
+        C c1 = new C(a1);
+        C c2 = new C(b1);
+        c1.showA();
+        c2.showA();
+
+        // Zadanie - stworzyć 4 klasy
+        //
+        // a) Shape, Circle, Square, Triangle
+        // 3 ostatnie dziedziczą po Shape
+
+        // b) klasa Shape zawiera metodę draw(),
+        // która powinna być przeciążona
+        // w pozostałych klasach.
+        // metoda powinna rysować na wyjście
+        // figurę za pomocą znaków "*"
+
+        // c) utworzyć tablicę obiektów Shape
+        // wypełnić ją obiektami Circle, Square i Triangle
+        // a następnie w pętli wywołać funkcję draw() na
+        // elementach tej tablicy
+        int size = 4;
+        Shape[] shapes = new Shape[size];
+        shapes[0] = new Triangle();
+        shapes[1] = new Circle(); // wskazowka dla ambitnych
+        // x*x + y*y = r*r
+        shapes[2] = new Square();
+        shapes[3] = new UndefinedShape();
+
+        drawShapes(shapes, size);
+
+        // Zadanie
+        // Stworzyć abstrakcyjną klasę Dog z minimum
+        // jedną metodą abstrakcyjną showBreed()
+        // Następnie utworzyć 2 klasy dziedziczące po niej.
+        // Zademonstrować działanie polimorfizmu.
+
+        // Przykład - polimorfizm nie zachodzi dla metod
+        // statycznych
+        StaticSuper sup = new StaticSub();
+        System.out.println(sup.staticGet());
+        // Wniosek!
+        // nie możemy przeciążać metod statycznych
+        // a zatem nie zachodzi polimorfizm.
+        System.out.println(sup.dynamicGet());
+
+        // Przykład - polimorfizm w konstruktorach
+        new RoundGlyph(5);
+
+        // kowariancja typów zwracanych
+        Mill m = new Mill();
+        Grain g = m.process();
+//        String str = String.valueOf(g);
+//        System.out.println(str);
+        System.out.println(g);
+        m = new WheatMill();
+        g = m.process();
+        System.out.println(g);
+
+        // Wniosek
+        // Przeciążone metody polimorficzne mogą się
+        // różnić co do typu zwracanego, ale tylko w ten
+        // sposób, że typ zwracany w klasie pochodnej jest
+        // typem pochodnym w stosunku do typu zwracanego
+        // w klasie bazowej.
 
 
     }
+
+    public static void drawShapes(Shape[] shapes, int size) {
+        for(int i=0; i<size; i++) {
+            shapes[i].draw(); // polimorfizm
+        }
+    }
+
     public void foo() {
         System.out.println("package oop");
 //        A a - new A(); nie zadziałą!
