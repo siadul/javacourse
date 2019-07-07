@@ -151,7 +151,7 @@ public class Oop3 {
                 w2.value()
         );
 
-        // Pnieważ klasy wewnętrzne nie posiadają nazwy
+        // Ponieważ klasy wewnętrzne nie posiadają nazwy
         // nie możemy im definiwoać konstruktorów natomiast
         // możemy:
 
@@ -163,8 +163,157 @@ public class Oop3 {
         // inicjalizacjować pola w bloku inicjalizującym
 
 
+        // klasy zagnieżdżone (statyczne klasy wewnętrzne)
+        // składnia
+//        class Klasa {
+//            public/protected/private static class InnerClass {
+//
+//            }
+//        }
+
+        // Przykład
+        Contents contents1 = Parcel11.contents();
+        Destination destination1 = Parcel11.destination("Tasmania");
+
+//        Parcel11.ParcelDestination inner =
+//                new Parcel11.ParcelDestination("Kraków");
+        // konstruktor jest prywatny - nie możemy tworzyć obiektów
+        // klasy wewnętrznej spoza obszaru klasy, w której się
+        // ona znajduje
+
+        // Zadanie
+        // Stworzyć klasę zawierającą klasę zagnieżdżoną
+        // (wewnętrzną klasę statyczną).
+        // Następnie stworzyć instancję klasy wewnętrznej (statycznej)
+        ZadanieStaticClass.ZadanieStaticClassInner z =
+                new ZadanieStaticClass.ZadanieStaticClassInner();
+        z.show();
+
+        // jak stworzyć obiekt klasy wewnętrznej?
+        // I sposób
+        ZadanieStaticClass.ZadanieNonStaticClassInner z2 =
+                new ZadanieStaticClass().produceZadanieNonStaticClassInner();
+        z2.show();
+
+        // II sposób
+        ZadanieStaticClass.ZadanieNonStaticClassInner z3 =
+                new ZadanieStaticClass().new ZadanieNonStaticClassInner();
+
+        z3.show();
+
+        // dlaczego w obrębie metody nie mogę utworzyć takiej klasy?
+        // ponieważ klasa utworzona w obrębie metody jest zawsze
+        // klasą niestatyczną wewnętrzną, a takie klasy
+        // nie mogą zawierać statycznych elementów
+//        class ZadanieStaticClass {
+//            static class ZadanieStaticClassInner {
+//                public void show() {
+//                    System.out.println("Hello from ZadanieStaticClassInner");
+//                }
+//            }
+//        }
 
 
+        // klasy w obrębie interfejsów
+        // Wniosek
+        // Klasy w obrębie interfejsów są zawsze
+        // klasami statycznymi wewnętrznymi
+        // (bo nie istnieje łącznik między nimi)
+        new ZadanieStaticClass.ClassInInterface.Test().howdy();
+        // Uwaga new tyczy się ZadanieStaticClass.ClassInInterface.Test
+        // a nie samego ZadanieStaticClass (prosze zwrócić uwage
+        // na nawiasy "()")
 
+        // Zadanie
+        // Utwórz interfejs zawierający klasę zagnieżdżoną
+        // z metodą statyczną, która wywołuje metodę interfejsu
+        // i wypisuje wynik wywołania na wyjściu.
+        // Zaimplmentuj interfejs i przekaż egzemplarz implmentacji
+        // do metody.
+        Zadanie21Interface.Zadanie21 z21 = new Zadanie21Interface.Zadanie21();
+
+        // I sposób - implementujemy interfejs w obrębie klasy wewnętrznej
+//        Zadanie21Interface.Zadanie21.test(
+//                new Zadanie21Interface.Zadanie21()
+//        );
+
+        // II sposób - korzystamy z anonimowej klasy wewnętrznej
+        Zadanie21Interface.Zadanie21.test(
+                new Zadanie21Interface() {
+                    @Override
+                    public String show() {
+                        return "Hello from Anonymous Inner Class which implements Zadanie21Interface";
+                    }
+                }
+        );
+
+        // III sposób - lambda
+        Zadanie21Interface.Zadanie21.test(
+                () -> "Hello from Anonymous Inner Class which implements Zadanie21Interface"
+        );
+
+        z21.show();
+
+
+        // klasy wielokrotnie zagnieżdżone
+        // Przykład
+//        public class MNA {
+//            private void f() {}
+//            class A {
+//                private void g() {}
+//                public class B {
+//                    void h() {
+//                        g();
+//                        f();
+//                    }
+//                }
+//            }
+//        }
+        MNA mna = new MNA();
+//        mna.f(); // f jest prywatne, więc poza obrębem
+        // Uwaga!
+        // klasy nie możemy z niego korzystać, natomiast
+        // w klasie wewnętrznej jak najbardziej.
+        // Stopień zagnieżdżenia klas nie ma tutaj znaczenia.
+        MNA.A mnaa = mna.new A();
+        MNA.A.B mnaab = mnaa.new B();
+        mnaab.h();
+
+
+        // Po co klasy wewnętrzne?
+        // dziedziczenie wielokrotne
+        // Przykład
+        Z3 zz = new Z3();
+        takesD2(zz);
+        E2Z e2 = zz.makeE();
+        takesE2(e2);
+        e2.showE2();
+        e2.getZ().showD2();
+
+        // dziedziczenie po klasach wewnętrznych
+        InheritInner inheritInner = new InheritInner(
+                new WithInner()
+        );
+        inheritInner.show();
+
+        // Zadanie
+        // Stwórz klasę z klasą wewnętrzną posiadają inny
+        // od domyślnego konstruktor (wymagający podania
+        // argumentów).
+        // Stwórz drugą klasę zawierającą drugą klasę wewnętrzną
+        // dziedziczącą po pierwszej klasie wewnętrznej.
+        Zadanie26e.Zadanie26bInner zadanie26 =
+                new Zadanie26e().new Zadanie26bInner(
+                        new Zadanie26(), 5
+                );
+        zadanie26.show();
+        zadanie26.show2();
+    }
+
+    static void takesD2(D2 d2) {
+        d2.showD2();
+    }
+    static void takesE2(E2 e2) {
+        e2.showE2();
     }
 }
