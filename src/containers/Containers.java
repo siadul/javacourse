@@ -37,7 +37,9 @@ public class Containers {
         // i wypełnić ją za pomocą metod Arrays.asList
         // oraz Collections.addAll().
 
-
-
+        PrintingContainers.test();
+        ListFeatures.test();
+        Iterators.test();
+        LinkedListFeatures.test();
     }
 }
