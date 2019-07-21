@@ -89,30 +89,6 @@ public class PriorityQueueDemo {
             m.put(rand.nextInt(20), "test" + i);
         }
         System.out.println(m);
-
-        // Zadanie 1
-        // Stworzyć klasę, zawierającą metodę, która będzie
-        // tworzyła histogram wystąpień liter w Stringu
-        // podanym jako argument i go wypisać
-
-        // Zadanie 2
-        // Stworzyć klasę, zawierającą metodę, która będzie
-        // tworzyła histogram wystąpień SŁÓW zawierających
-        // poszczególne litery alfabetu w Stringu
-        // podanym jako argument.
-        // Wypisać literę, liczbę wystąpień oraz
-        // słowa zawierającę tę literę
-        // Przykład:
-        // INPUT: "A BB CD AD AFD"
-        // OUTPUT: "A: 3 (A, AD, AFD)
-        //          B: 1 (BB)
-        //          C: 1 (CD)
-        //          D: 2 (CD, AFD)
-        //          F: 1 (AFD)
-
-
-
-
     }
 
 }
