@@ -26,8 +26,8 @@ public class WyszukiwarkaZadanieGridPane extends Application {
         sekwencjaTextArea.setWrapText(true);
         Label sekwencjaLabel = new Label();
         sekwencjaLabel.setText("Sekwencja");
-        siatkaPionowaVBox.add(sekwencjaLabel, 0, 0,2, 1);
-        siatkaPionowaVBox.add(sekwencjaTextArea, 0, 1,2, 1);
+        siatkaPionowaVBox.add(sekwencjaLabel, 0, 0, 2, 1);
+        siatkaPionowaVBox.add(sekwencjaTextArea, 0, 1, 2, 1);
         Label szukanaLabel = new Label("Szukaj: ");
         TextField szukanaTextField = new TextField();
         szukanaTextField.setMinWidth(200);
@@ -38,11 +38,11 @@ public class WyszukiwarkaZadanieGridPane extends Application {
         TextArea wynikTextArea = new TextArea();
         wynikTextArea.setEditable(false);
         wynikTextArea.setWrapText(true);
-        siatkaPionowaVBox.add(wynikTextArea, 0, 4,2, 1);
+        siatkaPionowaVBox.add(wynikTextArea, 0, 4, 2, 1);
         Button szukajButton = new Button("Szukaj");
 
         Label iloscLabel = new Label("");
-        siatkaPionowaVBox.add(iloscLabel, 0, 5,2, 1);
+        siatkaPionowaVBox.add(iloscLabel, 0, 5, 2, 1);
 
         szukajButton.setOnAction(actionEvent -> {
             wynikTextArea.setText(
@@ -66,7 +66,7 @@ public class WyszukiwarkaZadanieGridPane extends Application {
         siatkaPionowaVBox.add(zakonczButton, 1, 6);
 
         Scene scene = new Scene(siatkaPionowaVBox, 300, 250);
-        primaryStage.setTitle("Wyszukiwanie tekstu");
+        primaryStage.setTitle("Grid Pane - Wyszukiwanie tekstu");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
